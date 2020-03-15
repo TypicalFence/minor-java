@@ -20,6 +20,7 @@ maven_install(
         "com.google.inject:guice:4.2.2",
         "org.jboss.resteasy:resteasy-jaxrs:4.0.0.Beta5",
         "org.jboss.resteasy:resteasy-guice:4.0.0.Beta5",
+        "org.jboss.resteasy:resteasy-jackson2-provider:4.0.0.Beta5",
         "org.eclipse.jetty:jetty-server:9.4.18.v20190429",
         "org.eclipse.jetty:jetty-servlet:9.4.18.v20190429",
         "com.auth0:java-jwt:3.10.0",

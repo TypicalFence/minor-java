@@ -10,6 +10,7 @@ java_library(
             "@maven//:com_google_inject_guice",
             "@maven//:org_jboss_resteasy_resteasy_jaxrs",
             "@maven//:org_jboss_resteasy_resteasy_guice",
+            "@maven//:org_jboss_resteasy_resteasy_jackson2_provider",
             "@maven//:org_jboss_spec_javax_ws_rs_jboss_jaxrs_api_2_1_spec",
             "@maven//:org_eclipse_jetty_jetty_server",
             "@maven//:org_eclipse_jetty_jetty_servlet",
