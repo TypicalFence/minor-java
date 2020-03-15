@@ -13,7 +13,9 @@ java_library(
             "@maven//:org_jboss_spec_javax_ws_rs_jboss_jaxrs_api_2_1_spec",
             "@maven//:org_eclipse_jetty_jetty_server",
             "@maven//:org_eclipse_jetty_jetty_servlet",
-            "@maven//:javax_servlet_javax_servlet_api"
+            "@maven//:javax_servlet_javax_servlet_api",
+            "@maven//:com_auth0_java_jwt",
+            "@maven//:org_bouncycastle_bcprov_jdk15on"
     ],
 )
 

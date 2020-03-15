@@ -1,5 +1,6 @@
 package moe.zaun.prismriver.minor;
 
+import moe.zaun.prismriver.minor.modules.MainModule;
 import moe.zaun.prismriver.minor.modules.HelloModule;
 import moe.zaun.prismriver.minor.modules.OrderModule;
 import com.google.common.collect.Lists;
@@ -13,6 +14,7 @@ public class ModuleContextListener extends GuiceResteasyBootstrapServletContextL
     @Override
     protected List<? extends Module> getModules(ServletContext context) {
         return Lists.newArrayList(
+                new MainModule(),
                 new HelloModule(),
                 new OrderModule() 
         );

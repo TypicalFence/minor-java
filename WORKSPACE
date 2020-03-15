@@ -22,10 +22,11 @@ maven_install(
         "org.jboss.resteasy:resteasy-guice:4.0.0.Beta5",
         "org.eclipse.jetty:jetty-server:9.4.18.v20190429",
         "org.eclipse.jetty:jetty-servlet:9.4.18.v20190429",
+        "com.auth0:java-jwt:3.10.0",
+        "org.bouncycastle:bcprov-jdk15on:1.59"
     ],
     fetch_sources = True,
     repositories = [
-        "http://uk.maven.org/maven2",
         "https://jcenter.bintray.com/",
         "https://repo1.maven.org/maven2/",
     ],
