@@ -16,7 +16,9 @@ java_library(
             "@maven//:org_eclipse_jetty_jetty_servlet",
             "@maven//:javax_servlet_javax_servlet_api",
             "@maven//:com_auth0_java_jwt",
-            "@maven//:org_bouncycastle_bcprov_jdk15on"
+            "@maven//:org_bouncycastle_bcprov_jdk15on",
+            "@maven//:org_apache_commons_commons_lang3",
+            "@maven//:com_amazonaws_aws_java_sdk_dynamodb"
     ],
 )
 

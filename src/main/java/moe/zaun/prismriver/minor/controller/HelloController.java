@@ -11,10 +11,12 @@ import javax.ws.rs.Produces;
 
 import moe.zaun.prismriver.minor.service.Greeter;
 import moe.zaun.prismriver.minor.model.Cover;
+import moe.zaun.prismriver.minor.model.Song;
 import moe.zaun.prismriver.minor.annotations.RequiresAuth;
 import moe.zaun.prismriver.minor.annotations.RequiresAuth;
 import moe.zaun.prismriver.minor.dto.SimpleApiResponse;
 import moe.zaun.prismriver.minor.dto.ApiResponse;
+import moe.zaun.prismriver.minor.service.aws.AwsSongService;
 
 @Path("hello")
 public class HelloController {
@@ -50,4 +52,18 @@ public class HelloController {
         cover.songs.add("lol");
         return cover;
     }
+
+    @GET
+    @Path("/aws")
+    public String e() {
+        Song song = new Song();
+        song.id = "blaaaaaaa";
+        song.title = "senbonzakura";
+        song.artist = "Hatsune Miku";
+        AwsSongService songs = new AwsSongService();
+        songs.addSong(song);
+
+        return "E";
+    }
+
 }

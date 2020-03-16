@@ -24,7 +24,9 @@ maven_install(
         "org.eclipse.jetty:jetty-server:9.4.18.v20190429",
         "org.eclipse.jetty:jetty-servlet:9.4.18.v20190429",
         "com.auth0:java-jwt:3.10.0",
-        "org.bouncycastle:bcprov-jdk15on:1.59"
+        "org.bouncycastle:bcprov-jdk15on:1.59",
+        "org.apache.commons:commons-lang3:3.9",
+        "com.amazonaws:aws-java-sdk-dynamodb:1.11.745"
     ],
     fetch_sources = True,
     repositories = [
