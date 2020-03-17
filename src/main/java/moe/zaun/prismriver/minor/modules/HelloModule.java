@@ -7,8 +7,8 @@ import moe.zaun.prismriver.minor.service.Greeter;
 import moe.zaun.prismriver.minor.service.DefaultGreeter;
 
 public class HelloModule implements Module {
-   public void configure(final Binder binder) {
-      binder.bind(HelloController.class);
-      binder.bind(Greeter.class).to(DefaultGreeter.class);
-   }
+    public void configure(final Binder binder) {
+        binder.bind(HelloController.class);
+        binder.bind(Greeter.class).to(DefaultGreeter.class);
+    }
 }

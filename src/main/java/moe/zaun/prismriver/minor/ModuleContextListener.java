@@ -3,6 +3,7 @@ package moe.zaun.prismriver.minor;
 import moe.zaun.prismriver.minor.modules.MainModule;
 import moe.zaun.prismriver.minor.modules.HelloModule;
 import moe.zaun.prismriver.minor.modules.OrderModule;
+import moe.zaun.prismriver.minor.modules.SongModule;
 import com.google.common.collect.Lists;
 import com.google.inject.Module;
 import org.jboss.resteasy.plugins.guice.GuiceResteasyBootstrapServletContextListener;
@@ -16,7 +17,8 @@ public class ModuleContextListener extends GuiceResteasyBootstrapServletContextL
         return Lists.newArrayList(
                 new MainModule(),
                 new HelloModule(),
-                new OrderModule() 
+                new OrderModule(),
+                new SongModule()
         );
     }
 }

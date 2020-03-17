@@ -16,15 +16,18 @@ import moe.zaun.prismriver.minor.annotations.RequiresAuth;
 import moe.zaun.prismriver.minor.annotations.RequiresAuth;
 import moe.zaun.prismriver.minor.dto.SimpleApiResponse;
 import moe.zaun.prismriver.minor.dto.ApiResponse;
+import moe.zaun.prismriver.minor.service.interfaces.SongService;
 import moe.zaun.prismriver.minor.service.aws.AwsSongService;
 
 @Path("hello")
 public class HelloController {
     private final Greeter greeter;
+    private final SongService songService;
     
     @Inject
-    public HelloController(final Greeter greeter) {
+    public HelloController(final Greeter greeter, final SongService songService) {
         this.greeter = greeter;
+        this.songService = songService;
     }
 
     @GET
@@ -60,8 +63,7 @@ public class HelloController {
         song.id = "blaaaaaaa";
         song.title = "senbonzakura";
         song.artist = "Hatsune Miku";
-        AwsSongService songs = new AwsSongService();
-        songs.addSong(song);
+        this.songService.addSong(song);
 
         return "E";
     }
