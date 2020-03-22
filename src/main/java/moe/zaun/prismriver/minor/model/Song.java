@@ -11,4 +11,8 @@ public class Song extends Model {
 
     @JsonUnwrapped
     public AlbumInfo albumInfo;
+
+    public Song() {
+        this.albumInfo = new AlbumInfo();
+    }
 }

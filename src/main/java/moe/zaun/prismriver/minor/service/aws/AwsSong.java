@@ -1,6 +1,7 @@
 package moe.zaun.prismriver.minor.service.aws;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import moe.zaun.prismriver.minor.model.AlbumInfo;
@@ -12,6 +13,10 @@ import java.util.UUID;
 public class AwsSong {
     private Song song;
 
+    public AwsSong() {
+        this(new Song());
+    }
+
     public AwsSong(Song song) {
         this.song = song;
 
@@ -19,14 +24,14 @@ public class AwsSong {
         if (this.song.id == null) {
             this.song.id = UUID.randomUUID().toString().replace("-", "");
         }
-
-        // ensure that the song has an AlbumInfo to avoid nurrupo
-        if (this.song.albumInfo == null) {
-            this.song.albumInfo = new AlbumInfo();
-        }
     }
 
-    @DynamoDBHashKey(attributeName="id")  
+    @DynamoDBIgnore
+    public Song getSong() {
+        return song;
+    }
+
+    @DynamoDBHashKey(attributeName="id")
     public String getId() { 
         return this.song.id; 
     }

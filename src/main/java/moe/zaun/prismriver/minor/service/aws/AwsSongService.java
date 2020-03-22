@@ -2,6 +2,7 @@ package moe.zaun.prismriver.minor.service.aws;
 
 import java.util.List;
 
+import com.amazonaws.services.dynamodbv2.model.TableDescription;
 import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import org.apache.commons.lang3.NotImplementedException;
@@ -28,7 +29,8 @@ public class AwsSongService implements SongService {
     }
 
     public Song getSongById(String id) {
-        throw new NotImplementedException("TODO");
+        AwsSong awsSong = this.mapper.load(AwsSong.class, id);
+        return awsSong.getSong();
     }
 
     public int getSongCount() {

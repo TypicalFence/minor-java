@@ -10,13 +10,10 @@ import moe.zaun.prismriver.minor.model.Created;
 import moe.zaun.prismriver.minor.model.Song;
 import moe.zaun.prismriver.minor.service.interfaces.SongService;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("api/v1/music")
+@Path("api/v1/music/songs")
 public class SongController {
 
     private final SongService songService;
@@ -27,7 +24,7 @@ public class SongController {
     }
 
     @POST
-    @Path("/songs")
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public ApiResponse postSong(RequestSongDTO postedSong) {
@@ -43,5 +40,13 @@ public class SongController {
         response.setMessage("ok");
         response.setData(new Created(id.get()));
         return response;
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Song getSongById(@PathParam("id") String id) {
+        Song song = this.songService.getSongById(id);
+        return song;
     }
 }
