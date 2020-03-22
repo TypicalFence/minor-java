@@ -1,5 +1,6 @@
 package moe.zaun.prismriver.minor.controller;
 
+
 import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import moe.zaun.prismriver.minor.dto.ApiResponse;
@@ -10,8 +11,14 @@ import moe.zaun.prismriver.minor.model.Created;
 import moe.zaun.prismriver.minor.model.Song;
 import moe.zaun.prismriver.minor.service.interfaces.SongService;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
 
 @Path("api/v1/music/songs")
 public class SongController {

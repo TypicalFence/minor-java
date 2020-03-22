@@ -1,15 +1,14 @@
 package moe.zaun.prismriver.minor.service.aws;
 
-import java.util.List;
-
-import com.amazonaws.services.dynamodbv2.model.TableDescription;
-import com.google.common.base.Optional;
-import com.google.inject.Inject;
-import org.apache.commons.lang3.NotImplementedException;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.google.common.base.Optional;
+import com.google.inject.Inject;
 import moe.zaun.prismriver.minor.model.Song;
 import moe.zaun.prismriver.minor.service.interfaces.SongService;
+import org.apache.commons.lang3.NotImplementedException;
+
+import java.util.List;
 
 public class AwsSongService implements SongService {
     

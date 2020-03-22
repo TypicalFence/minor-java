@@ -1,13 +1,14 @@
 package moe.zaun.prismriver.minor.middleware;
 
-import java.lang.reflect.Method;
+import com.google.inject.Inject;
+import moe.zaun.prismriver.minor.annotations.RequiresAuth;
+import moe.zaun.prismriver.minor.service.interfaces.TrustedPublicKeysService;
+
 import javax.ws.rs.container.DynamicFeature;
 import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.FeatureContext;
 import javax.ws.rs.ext.Provider;
-import com.google.inject.Inject;
-import moe.zaun.prismriver.minor.annotations.RequiresAuth;
-import moe.zaun.prismriver.minor.service.interfaces.TrustedPublicKeysService;
+import java.lang.reflect.Method;
 
 @Provider
 public class AuthFilterFeature implements DynamicFeature {

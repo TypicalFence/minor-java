@@ -1,13 +1,14 @@
 package moe.zaun.prismriver.minor.middleware;
 
-import java.io.IOException;
-import javax.ws.rs.ext.Provider;
-import javax.ws.rs.ext.WriterInterceptor;
-import javax.ws.rs.ext.WriterInterceptorContext;
 import com.google.common.base.Optional;
 import moe.zaun.prismriver.minor.dto.ApiResponse;
 import moe.zaun.prismriver.minor.dto.SimpleApiResponse;
 import moe.zaun.prismriver.minor.model.Model;
+
+import javax.ws.rs.ext.Provider;
+import javax.ws.rs.ext.WriterInterceptor;
+import javax.ws.rs.ext.WriterInterceptorContext;
+import java.io.IOException;
 
 @Provider
 public class ApiResponseInterceptor implements WriterInterceptor {

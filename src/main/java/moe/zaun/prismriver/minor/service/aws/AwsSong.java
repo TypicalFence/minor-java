@@ -1,10 +1,9 @@
 package moe.zaun.prismriver.minor.service.aws;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
-import moe.zaun.prismriver.minor.model.AlbumInfo;
 import moe.zaun.prismriver.minor.model.Song;
 
 import java.util.UUID;

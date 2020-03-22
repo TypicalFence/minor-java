@@ -1,9 +1,10 @@
 package moe.zaun.prismriver.minor.service;
 
-import java.io.IOException;
-import java.security.PublicKey;
 import moe.zaun.prismriver.minor.service.interfaces.TrustedPublicKeysService;
 import moe.zaun.prismriver.minor.util.PemUtils;
+
+import java.io.IOException;
+import java.security.PublicKey;
 
 public class FakeTrustedPublicKeyService implements TrustedPublicKeysService {
 

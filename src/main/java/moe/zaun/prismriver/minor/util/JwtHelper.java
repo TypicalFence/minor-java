@@ -1,8 +1,8 @@
 package moe.zaun.prismriver.minor.util;
 
 import com.auth0.jwt.JWT;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class JwtHelper {
     public static String getAlgorithm(String token) {

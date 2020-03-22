@@ -1,9 +1,9 @@
 package moe.zaun.prismriver.minor.service.interfaces;
 
-import java.util.List;
-
 import com.google.common.base.Optional;
 import moe.zaun.prismriver.minor.model.Song;
+
+import java.util.List;
 
 public interface SongService {
     public Optional<String> addSong(Song song);

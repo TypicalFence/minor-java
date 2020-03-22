@@ -1,7 +1,8 @@
 package moe.zaun.prismriver.minor.dto;
 
-import java.util.List;
 import moe.zaun.prismriver.minor.model.Model;
+
+import java.util.List;
 
 public class ListApiResponse extends AbstractApiResponse {
  

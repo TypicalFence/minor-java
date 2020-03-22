@@ -1,19 +1,17 @@
 package moe.zaun.prismriver.minor.controller;
 
 import com.google.inject.Inject;
-
-import java.util.ArrayList;
+import moe.zaun.prismriver.minor.annotations.RequiresAuth;
+import moe.zaun.prismriver.minor.model.Cover;
+import moe.zaun.prismriver.minor.model.Song;
+import moe.zaun.prismriver.minor.service.Greeter;
+import moe.zaun.prismriver.minor.service.interfaces.SongService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-
-import moe.zaun.prismriver.minor.model.Song;
-import moe.zaun.prismriver.minor.service.Greeter;
-import moe.zaun.prismriver.minor.model.Cover;
-import moe.zaun.prismriver.minor.annotations.RequiresAuth;
-import moe.zaun.prismriver.minor.service.interfaces.SongService;
+import java.util.ArrayList;
 
 @Path("hello")
 public class HelloController {
