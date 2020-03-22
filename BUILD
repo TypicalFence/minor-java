@@ -35,7 +35,7 @@ java_binary(
 java_test(
     name = "tests",
     srcs = glob(["src/test/java/moe/zaun/prismriver/minor/**/*.java"]),
-    test_class = "moe.zaun.prismriver.minor.TestApp",
+    test_class = "moe.zaun.prismriver.minor.AllTests",
     deps = [
         ":lib",
         "@maven//:com_google_guava_guava",
