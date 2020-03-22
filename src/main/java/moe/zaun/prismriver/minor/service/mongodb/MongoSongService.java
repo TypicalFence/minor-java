@@ -8,20 +8,22 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.InsertOneResult;
 import moe.zaun.prismriver.minor.model.Song;
 import moe.zaun.prismriver.minor.service.interfaces.SongService;
-import org.apache.commons.lang3.NotImplementedException;
 import org.bson.BsonValue;
+import org.bson.types.ObjectId;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class MongoSongService implements SongService {
 
-    private final MongoClient mongo;
     private final MongoDatabase db;
 
     @Inject
     public MongoSongService(final MongoClient db) {
-        this.mongo = db;
-        this.db = mongo.getDatabase("minor");
+        this.db = db.getDatabase("minor");
     }
 
     private MongoCollection<MongoSong> getCollection() {
@@ -45,26 +47,49 @@ public class MongoSongService implements SongService {
 
     @Override
     public Optional<Song> getSongById(String id) {
-        throw new NotImplementedException("TODO");
+        ObjectId objectId;
+
+        try {
+            objectId = new ObjectId(id);
+        } catch (IllegalArgumentException _e) {
+            return Optional.absent();
+        }
+
+        MongoCollection<MongoSong> collection = this.getCollection();
+        MongoSong songDocument = collection.find(eq("_id", objectId)).first();
+        if (songDocument == null) {
+            return Optional.absent();
+        }
+
+        return Optional.of(songDocument.getSong());
     }
 
     @Override
     public int getSongCount() {
-        throw new NotImplementedException("TODO");
+        MongoCollection<MongoSong> collection = this.getCollection();
+        return (int) collection.countDocuments();
     }
 
     @Override
     public List<Song> getSongs() {
-        throw new NotImplementedException("TODO");
+        return this.getSongs(0);
     }
 
     @Override
     public List<Song> getSongs(int start) {
-        throw new NotImplementedException("TODO");
+        return this.getSongs(start, LIMIT);
     }
 
     @Override
     public List<Song> getSongs(int start, int limit) {
-        throw new NotImplementedException("TODO");
+        MongoCollection<MongoSong> collection = this.getCollection();
+        ArrayList<MongoSong> mongoSongs = collection.find()
+                .skip(start)
+                .limit(limit)
+                .into(new ArrayList<>());
+
+        return mongoSongs.stream()
+                .map((MongoSong x) -> x.getSong())
+                .collect(Collectors.toList());
     }
 }

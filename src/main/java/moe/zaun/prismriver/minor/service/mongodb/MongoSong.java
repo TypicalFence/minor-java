@@ -1,6 +1,7 @@
 package moe.zaun.prismriver.minor.service.mongodb;
 
 import moe.zaun.prismriver.minor.model.Song;
+import org.bson.codecs.pojo.annotations.BsonIgnore;
 import org.bson.types.ObjectId;
 
 public class MongoSong {
@@ -12,6 +13,11 @@ public class MongoSong {
 
     public MongoSong(Song song) {
         this.song = song;
+    }
+
+    @BsonIgnore
+    public Song getSong() {
+        return song;
     }
 
     public ObjectId getId() {
