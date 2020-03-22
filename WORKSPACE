@@ -26,7 +26,8 @@ maven_install(
         "com.auth0:java-jwt:3.10.0",
         "org.bouncycastle:bcprov-jdk15on:1.59",
         "org.apache.commons:commons-lang3:3.9",
-        "com.amazonaws:aws-java-sdk-dynamodb:1.11.745"
+        "com.amazonaws:aws-java-sdk-dynamodb:1.11.745",
+        "com.fasterxml.jackson.core:jackson-annotations:2.10.0",
     ],
     fetch_sources = True,
     repositories = [

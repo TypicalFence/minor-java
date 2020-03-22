@@ -1,6 +1,8 @@
 package moe.zaun.prismriver.minor.service.aws;
 
 import java.util.List;
+
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import org.apache.commons.lang3.NotImplementedException;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
@@ -19,9 +21,10 @@ public class AwsSongService implements SongService {
         this.mapper = new DynamoDBMapper(this.db);
     }
 
-    public void addSong(Song song) {
+    public Optional<String> addSong(Song song) {
         AwsSong awsSong = new AwsSong(song);
         this.mapper.save(awsSong);
+        return Optional.of(awsSong.getId());
     }
 
     public Song getSongById(String id) {

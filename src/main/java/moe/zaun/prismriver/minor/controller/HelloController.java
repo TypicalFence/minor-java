@@ -9,15 +9,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import moe.zaun.prismriver.minor.model.Song;
 import moe.zaun.prismriver.minor.service.Greeter;
 import moe.zaun.prismriver.minor.model.Cover;
-import moe.zaun.prismriver.minor.model.Song;
 import moe.zaun.prismriver.minor.annotations.RequiresAuth;
-import moe.zaun.prismriver.minor.annotations.RequiresAuth;
-import moe.zaun.prismriver.minor.dto.SimpleApiResponse;
-import moe.zaun.prismriver.minor.dto.ApiResponse;
 import moe.zaun.prismriver.minor.service.interfaces.SongService;
-import moe.zaun.prismriver.minor.service.aws.AwsSongService;
 
 @Path("hello")
 public class HelloController {

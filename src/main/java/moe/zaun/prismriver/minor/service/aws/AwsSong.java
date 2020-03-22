@@ -2,9 +2,11 @@ package moe.zaun.prismriver.minor.service.aws;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIgnore;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import moe.zaun.prismriver.minor.model.AlbumInfo;
 import moe.zaun.prismriver.minor.model.Song;
+
+import java.util.UUID;
 
 @DynamoDBTable(tableName="Songs")
 public class AwsSong {
@@ -12,6 +14,16 @@ public class AwsSong {
 
     public AwsSong(Song song) {
         this.song = song;
+
+        // generate ID if it doesn't have one yet
+        if (this.song.id == null) {
+            this.song.id = UUID.randomUUID().toString().replace("-", "");
+        }
+
+        // ensure that the song has an AlbumInfo to avoid nurrupo
+        if (this.song.albumInfo == null) {
+            this.song.albumInfo = new AlbumInfo();
+        }
     }
 
     @DynamoDBHashKey(attributeName="id")  
@@ -51,11 +63,29 @@ public class AwsSong {
     }
 
     @DynamoDBAttribute(attributeName="track")  
-    public Integer getTrack() { 
-        return this.song.track; 
+    public Integer getTrack() {
+        return this.song.albumInfo.track;
     }
 
     public void setTrack(Integer track) {
-        this.song.track = track;
+        this.song.albumInfo.track = track;
+    }
+
+    @DynamoDBAttribute(attributeName="album")
+    public String getAlbum() {
+        return this.song.albumInfo.album;
+    }
+
+    public void setAlbum(String album) {
+        this.song.albumInfo.album = album;
+    }
+
+    @DynamoDBAttribute(attributeName="album_artist")
+    public String getAlbumArtist() {
+        return this.song.albumInfo.albumArtist;
+    }
+
+    public void setAlbumArtist(String albumArtist) {
+        this.song.albumInfo.albumArtist = albumArtist;
     }
 }
