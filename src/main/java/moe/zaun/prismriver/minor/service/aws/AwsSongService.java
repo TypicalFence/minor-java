@@ -2,6 +2,8 @@ package moe.zaun.prismriver.minor.service.aws;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.model.Select;
 import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import moe.zaun.prismriver.minor.model.Song;
@@ -27,13 +29,18 @@ public class AwsSongService implements SongService {
         return Optional.of(awsSong.getId());
     }
 
-    public Song getSongById(String id) {
+    public Optional<Song> getSongById(String id) {
         AwsSong awsSong = this.mapper.load(AwsSong.class, id);
-        return awsSong.getSong();
+
+        if (awsSong == null) {
+            return Optional.absent();
+        }
+
+        return Optional.of(awsSong.getSong());
     }
 
     public int getSongCount() {
-        throw new NotImplementedException("TODO");
+        return this.mapper.count(AwsSong.class, new DynamoDBScanExpression().withSelect(Select.COUNT));
     }
 
     public List<Song> getSongs() {

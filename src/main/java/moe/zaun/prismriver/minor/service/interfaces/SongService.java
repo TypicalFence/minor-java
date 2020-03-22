@@ -6,10 +6,30 @@ import moe.zaun.prismriver.minor.model.Song;
 import java.util.List;
 
 public interface SongService {
-    public Optional<String> addSong(Song song);
-    public Song getSongById(String id);
-    public int getSongCount();
-    public List<Song> getSongs();
-    public List<Song> getSongs(int start);
-    public List<Song> getSongs(int start, int limit);
+    int LIMIT = 20;
+
+    /**
+     * Adds a Song
+     * @param song The Song to add
+     * @return The ID of the newly created song if successful
+     */
+    Optional<String> addSong(Song song);
+
+
+    /**
+     * Looks up a Song
+     * @param id The ID of the Song to lookup
+     * @return The Requested song if found
+     */
+    Optional<Song> getSongById(String id);
+
+    /**
+     * Gets the Amount of Songs known to the service
+     * @return The number of Songs
+     */
+    int getSongCount();
+
+    List<Song> getSongs();
+    List<Song> getSongs(int start);
+    List<Song> getSongs(int start, int limit);
 }

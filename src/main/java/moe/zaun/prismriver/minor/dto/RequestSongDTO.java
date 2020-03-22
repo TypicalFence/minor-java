@@ -3,8 +3,11 @@ package moe.zaun.prismriver.minor.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import moe.zaun.prismriver.minor.model.Song;
 
-// TODO add validation
-public class RequestSongDTO {
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.stream.Stream;
+
+public class RequestSongDTO implements RequestDTO {
     public String title;
     public String artist;
     public String year;
@@ -22,8 +25,6 @@ public class RequestSongDTO {
         song.year = this.year;
         song.genre = this.genre;
 
-        // the python implementation currently doesn't do any more validation than this,
-        // so this should be fine for the moment
         if (this.album != null) {
             song.albumInfo.album = this.album;
             song.albumInfo.track = this.track;
@@ -31,5 +32,22 @@ public class RequestSongDTO {
         }
 
         return song;
+    }
+
+    @Override
+    public boolean isValid() {
+        // we could have used JSR 380
+        // but thanks to some conditional cases
+        // that would result in much more code and complexity
+
+        // genre is optional
+        boolean validBase = Stream.of(this.title, this.artist, this.year).anyMatch(Objects::isNull);
+
+        if (this.album != null) {
+            boolean validAlbum = Stream.of(this.album, this.track, this.albumArtist).anyMatch(Objects::isNull);
+            return validBase && validAlbum;
+        }
+
+        return validBase;
     }
 }
