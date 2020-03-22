@@ -10,6 +10,10 @@ public class StatusApiResponse extends AbstractApiResponse {
         return new StatusApiResponse(400, "bad_request");
     }
 
+    public static StatusApiResponse notFound() {
+        return new StatusApiResponse(404, "not_found");
+    }
+
     public static StatusApiResponse internalError() {
         return new StatusApiResponse(500, "internal_error");
     }

@@ -3,18 +3,18 @@ package moe.zaun.prismriver.minor.controller;
 
 import com.google.common.base.Optional;
 import com.google.inject.Inject;
-import moe.zaun.prismriver.minor.dto.ApiResponse;
 import moe.zaun.prismriver.minor.dto.ListApiResponse;
 import moe.zaun.prismriver.minor.dto.RequestSongDTO;
-import moe.zaun.prismriver.minor.dto.SimpleApiResponse;
-import moe.zaun.prismriver.minor.dto.StatusApiResponse;
 import moe.zaun.prismriver.minor.model.Created;
 import moe.zaun.prismriver.minor.model.Model;
 import moe.zaun.prismriver.minor.model.Song;
 import moe.zaun.prismriver.minor.service.interfaces.SongService;
 
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.InternalServerErrorException;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -39,9 +39,9 @@ public class SongController {
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ApiResponse postSong(RequestSongDTO postedSong) {
+    public Created postSong(RequestSongDTO postedSong) {
         if (!postedSong.isValid()) {
-            return StatusApiResponse.badRequest();
+            throw new BadRequestException();
         }
 
         Song song = postedSong.toModel();
@@ -49,14 +49,10 @@ public class SongController {
         Optional<String> id = this.songService.addSong(song);
 
         if (!id.isPresent()) {
-            return StatusApiResponse.internalError();
+            throw new InternalServerErrorException();
         }
 
-        SimpleApiResponse response = new SimpleApiResponse();
-        response.setStatus(200);
-        response.setMessage("ok");
-        response.setData(new Created(id.get()));
-        return response;
+        return new Created(id.get());
     }
 
     @GET
@@ -64,6 +60,11 @@ public class SongController {
     @Produces(MediaType.APPLICATION_JSON)
     public Song getSongById(@PathParam("id") String id) {
         Optional<Song> song = this.songService.getSongById(id);
+
+        if (!song.isPresent()) {
+            throw new NotFoundException();
+        }
+
         return song.get();
     }
 
