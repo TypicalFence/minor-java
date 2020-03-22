@@ -20,6 +20,9 @@ java_library(
         "@maven//:org_jboss_resteasy_resteasy_jackson2_provider",
         "@maven//:org_jboss_resteasy_resteasy_jaxrs",
         "@maven//:org_jboss_spec_javax_ws_rs_jboss_jaxrs_api_2_1_spec",
+        "@maven//:org_mongodb_bson",
+        "@maven//:org_mongodb_mongodb_driver_core",
+        "@maven//:org_mongodb_mongodb_driver_sync",
     ],
 )
 
